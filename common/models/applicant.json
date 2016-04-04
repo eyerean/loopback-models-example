@@ -1,0 +1,37 @@
+{
+  "name": "Applicant",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "gsm": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "id": false,
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "jobs": {
+      "type": "hasAndBelongsToMany",
+      "model": "Job",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

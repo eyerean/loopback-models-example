@@ -1,0 +1,33 @@
+{
+  "name": "Company",
+  "base": "PersistedModel",
+  "strict": false,
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "name": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "location": {
+      "type": "string",
+      "required": true
+    },
+    "numberOfEmployees": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "jobs": {
+      "type": "hasMany",
+      "model": "Job",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

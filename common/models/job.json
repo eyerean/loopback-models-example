@@ -1,0 +1,44 @@
+{
+  "name": "Job",
+  "plural": "Jobs",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "slug": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "name": {
+      "type": "string"
+    },
+    "intro": {
+      "type": "string"
+    },
+    "personality": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "string"
+    },
+    "requirements": {
+      "type": "string"
+    },
+    "offer": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "applicants": {
+      "type": "hasAndBelongsToMany",
+      "model": "Applicant",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
