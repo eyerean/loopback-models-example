@@ -20,3 +20,7 @@ and this:
 
 
 API created in Loopback.
+
+##### <i>Strongloop relevant documentation: </i>
+  * [Working with LoopBack objects](https://docs.strongloop.com/display/public/LB/Working+with+LoopBack+objects)
+  * [Remote Methods](https://docs.strongloop.com/display/public/LB/Remote+methods#Remotemethods-HTTPmappingofinputarguments)
