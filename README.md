@@ -1,26 +1,64 @@
 Read Me
 =======
 
-A remote method of a model [Job] uses the schema of another model [Applicant] to POST data.
-It took me quite some time to figure it all out, so here it is.
+A remote method of a model <i>[Job]</i> uses the schema of another model <i>[Applicant]</i> to POST data.
 
-Code is not completed, will be refactored, but the important part is this:
+The Applicant can <i>apply</i> for more than one jobs.
 
-    module.exports = function(Job) {
-      var app = require('../../server/server');
-      Job.applyForJob = function(jobId, applicant, cb) {
-        var Applicant = app.models.Applicant;
+Models are linked with hasAndBelongsToMany relation
 
-and this:
+##### What has been done:
 
-    accepts: [
-      {arg: 'jobid', type: 'string', required: true },
-      {arg: 'applicant', type: 'Applicant', http: { source: 'body' } }
-    ]
+   * Use of one model inside another:
+
+
+     module.exports = function(Job) {
+       var app = require('../../server/server');
+
+       Job.applyForJob = function(jobId, applicant, cb) {
+         var Applicant = app.models.Applicant;
+[...]
+
+     accepts: [
+       {arg: 'jobid', type: 'string', required: true },
+       {arg: 'applicant', type: 'Applicant', http: { source: 'body' } }
+     ]
+
+   * Remote method for custom endpoint:
+
+
+    Job.applyForJob = function(jobId, applicant, cb) { [..] };
+
+[...]
+
+    Job.remoteMethod(
+      'applyForJob',
+      {	http: {path: '/:jobid/apply-for-job'}, [...] });
+
+
+   * Nested validation for both models:
+
+
+    Job.findById(jobId, function(err, job){ [...] });
+
+[...]
+
+    Applicant.findOrCreate({where: {email : applicant.email}}, applicant, function(err2, applicant, created){ [...] });
+
+
+
+   * Added new relation between models:
+
+
+    job.applicants.add(applicant, function(err3) { [...] });
+
+
 
 
 API created in Loopback.
 
-##### <i>Strongloop relevant documentation: </i>
+##### Strongloop relevant documentation:
   * [Working with LoopBack objects](https://docs.strongloop.com/display/public/LB/Working+with+LoopBack+objects)
   * [Remote Methods](https://docs.strongloop.com/display/public/LB/Remote+methods#Remotemethods-HTTPmappingofinputarguments)
+  * [HasAndBelongsToMany relations](https://docs.strongloop.com/display/public/LB/HasAndBelongsToMany+relations)
+  * [PersistedModel Static Methods](https://apidocs.strongloop.com/loopback/#persistedmodel)
