@@ -14,11 +14,11 @@ API created with [Loopback Framework](http://loopback.io/).
    * Use of one model inside another:
 
 
-     module.exports = function(Job) {
-       var app = require('../../server/server');
+        module.exports = function(Job) {
+            var app = require('../../server/server');
+        Job.applyForJob = function(jobId, applicant, cb) {
+            var Applicant = app.models.Applicant;
 
-       Job.applyForJob = function(jobId, applicant, cb) {
-         var Applicant = app.models.Applicant;
 [...]
 
      accepts: [
@@ -29,7 +29,7 @@ API created with [Loopback Framework](http://loopback.io/).
    * Remote method for custom endpoint:
 
 
-    Job.applyForJob = function(jobId, applicant, cb) { [..] };
+        Job.applyForJob = function(jobId, applicant, cb) { [..] };
 
 [...]
 
@@ -41,7 +41,7 @@ API created with [Loopback Framework](http://loopback.io/).
    * Nested validation for both models:
 
 
-    Job.findById(jobId, function(err, job){ [...] });
+        Job.findById(jobId, function(err, job){ [...] });
 
 [...]
 
@@ -52,7 +52,7 @@ API created with [Loopback Framework](http://loopback.io/).
    * Added new relation between models:
 
 
-    job.applicants.add(applicant, function(err3) { [...] });
+        job.applicants.add(applicant, function(err3) { [...] });
 
 
 
