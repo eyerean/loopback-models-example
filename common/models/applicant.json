@@ -20,7 +20,7 @@
     },
     "email": {
       "type": "string",
-      "id": false,
+      "id": true,
       "required": true
     }
   },

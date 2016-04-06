@@ -5,7 +5,9 @@ A remote method of a model <i>[Job]</i> uses the schema of another model <i>[App
 
 The Applicant can <i>apply</i> for more than one jobs.
 
-Models are linked with hasAndBelongsToMany relation
+Models are linked with hasAndBelongsToMany relation.
+
+API created with [Loopback Framework](http://loopback.io/).
 
 ##### What has been done:
 
@@ -53,9 +55,6 @@ Models are linked with hasAndBelongsToMany relation
     job.applicants.add(applicant, function(err3) { [...] });
 
 
-
-
-API created in Loopback.
 
 ##### Strongloop relevant documentation:
   * [Working with LoopBack objects](https://docs.strongloop.com/display/public/LB/Working+with+LoopBack+objects)
